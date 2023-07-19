@@ -1,0 +1,19 @@
+columnSuffix: arlssijw
+contentColumnType: text
+fieldGroup: 503c336f-70c3-4ab4-be90-b3b31699f763 # Common
+handle: location
+instructions: 'Please add the name of the location. Eg ''Great Pyramid of Giza'''
+name: 'Location Name'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

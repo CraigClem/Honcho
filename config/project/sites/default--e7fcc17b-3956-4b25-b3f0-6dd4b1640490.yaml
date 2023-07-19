@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: 'https://cc-test.ddev.site'
+primary: true
+siteGroup: 3e4e4b55-d233-47bd-94bc-794fbcb9466d # https://cc-test.ddev.site
+sortOrder: 1

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>Welcome to Craft CMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body class="">
+
+{% set places = craft.entries.section('places').all() %}
+
+{# Wonders of the world section. Each Place needs to be added to a slider. Place is determined by ID input in CMS #}
+
+<section>
+{# require the id to query api places and return info such as lon lat address and name #}
+{# create a new card template that is included for each item in loop #}
+    <h1>Wonders Of the World</h1>
+    {% for place in places %}
+        {{place.title ?? ''}}
+        {{place.location ?? ''}}
+        {{place.googleMapsId ?? ''}} 
+    {% endfor %}
+<section>
+
+{# City Search Section. API repsonse Data should be exposed to template to be able to interact with the data in twig #}
+{# Twig will need to pass om a searchTerm using an input fields value to the custom Module controller which will be used as a query parameter#}
+    <section>
+        <div>
+            <h1>City Search</h1>
+            <div x-data="{ searchInput : '', getValue: function() { console.log(this.searchInput); } }">
+                <label for="searchInput">Search:</label>
+                <input type="text" id="searchInput" x-model="searchInput" x-on:keyup="getValue" aria-label="Search input">
+            </div>
+        </div>
+        <div>
+            <h4>The results are...</h4>
+            <ul role="list">
+            <div>Result card</div>
+                {# {% for place in data %}
+                    <li role="listitem">
+                        <h3>{{ place.place }}</h3>
+                        <span>{{ place.color }}</span>
+                    </li>
+                {% endfor %} #}
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+
+</body>
+</html>

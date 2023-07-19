@@ -1,0 +1,19 @@
+columnSuffix: hfnmiifz
+contentColumnType: text
+fieldGroup: 503c336f-70c3-4ab4-be90-b3b31699f763 # Common
+handle: googleMapsId
+instructions: 'Google Maps Place ID. For example, the Great Pyramid of Giza’s Place ID is ChIJGymPrIdFWBQRJCSloj8vDIE.'
+name: 'Google Maps Place ID'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

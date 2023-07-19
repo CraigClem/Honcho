@@ -1,0 +1,12 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+
+.vscode
+storage
+vendor
+web/cpresources
+.htaccess
+web.config
+.env

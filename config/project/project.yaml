@@ -1,0 +1,27 @@
+dateModified: 1689763164
+email:
+  fromEmail: craigclement@hotmail.com
+  fromName: 'https://cc-test.ddev.site'
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    1bec5e50-e0b5-48a9-9f95-f53e4ed27b35: 'Google Maps Place ID' # Google Maps Place ID
+    3e4e4b55-d233-47bd-94bc-794fbcb9466d: 'https://cc-test.ddev.site' # https://cc-test.ddev.site
+    9a6e2a54-ec6b-478f-88a0-b45b43bb806b: Places # Places
+    78ec47d9-4e06-4258-8b6f-5e48d7fa0704: Place # Place
+    420e7856-3e35-4fdf-8c5d-b77f1165b73d: 'Location Name' # Location Name
+    503c336f-70c3-4ab4-be90-b3b31699f763: Common # Common
+    e7fcc17b-3956-4b25-b3f0-6dd4b1640490: 'https://cc-test.ddev.site' # https://cc-test.ddev.site
+system:
+  edition: solo
+  live: true
+  name: honcho-test
+  retryDuration: null
+  schemaVersion: 4.4.0.4
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

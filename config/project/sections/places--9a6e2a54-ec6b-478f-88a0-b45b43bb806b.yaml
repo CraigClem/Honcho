@@ -1,0 +1,12 @@
+defaultPlacement: end
+enableVersioning: true
+handle: places
+name: Places
+propagationMethod: all
+siteSettings:
+  e7fcc17b-3956-4b25-b3f0-6dd4b1640490: # https://cc-test.ddev.site
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel
