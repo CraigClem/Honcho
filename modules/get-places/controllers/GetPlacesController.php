@@ -1,6 +1,6 @@
 <?php
 
-// this is to used for our search term
+// this is used for our search term
 
 namespace modules\controllers;
 
@@ -34,7 +34,7 @@ class GetPlacesController extends Controller
 
         $key = App::env('GOOGLE_API_KEY');
         $input = Craft::$app->getRequest()->getBodyParam('input');
-        // $components = Craft::$app->getRequest()->getBodyParam('components');
+        // input will be the form input value 
 
         $headers = [
             'query' => [
@@ -64,6 +64,8 @@ class GetPlacesController extends Controller
         }
 
     }
+
+// function to get the detail of place using id from craft cms filed.  
 
     public function actionGetPlaceDetail() {
 

@@ -6,54 +6,145 @@
     <title>Welcome to Craft CMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="referrer" content="origin-when-cross-origin" />
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> 
 </head>
-<body class="">
 
-{% set places = craft.entries.section('places').all() %}
+{# use vite and set up tailwind using postcss so that i can config the colors, spacing and fonts #}
 
-{# Wonders of the world section. Each Place needs to be added to a slider. Place is determined by ID input in CMS #}
+<body class="bg-[#E4E9E8]" style="font-family: 'DM Sans', sans-serif;">
 
-<section>
-{# require the id to query api places and return info such as lon lat address and name #}
-{# create a new card template that is included for each item in loop #}
-    <h1>Wonders Of the World</h1>
-    {% for place in places %}
-        {{place.title ?? ''}}
-        {{place.location ?? ''}}
-        {{place.googleMapsId ?? ''}} 
-    {% endfor %}
-<section>
 
-{# City Search Section. API repsonse Data should be exposed to template to be able to interact with the data in twig #}
-{# Twig will need to pass om a searchTerm using an input fields value to the custom Module controller which will be used as a query parameter#}
-    <section>
-        <div>
-            <h1>City Search</h1>
-            <div x-data="{ searchInput : '', getValue: function() { console.log(this.searchInput); } }">
-                <label for="searchInput">Search:</label>
-                <input type="text" id="searchInput" x-model="searchInput" x-on:keyup="getValue" aria-label="Search input">
-            </div>
-        </div>
-        <div>
-            <h4>The results are...</h4>
-            <ul role="list">
-            <div>Result card</div>
-                {# {% for place in data %}
-                    <li role="listitem">
-                        <h3>{{ place.place }}</h3>
-                        <span>{{ place.color }}</span>
-                    </li>
-                {% endfor %} #}
-            </ul>
+    {% set places = craft.entries.section('places').all() %}
+
+    {# Wonders of the world section. Each Place needs to be added to a slider. Place is determined by ID input in CMS #}
+    <section class="my-24 mx-24">
+        {# require the id to query api places and return info such as lon lat address and name #}
+        {# create a new card template that is included for each item in loop #}
+        <h1 class="text-[#1f312f] text-5xl tracking-[-0.92px] mb-16">Wonders of the World</h1>
+
+        {# use place_id as argument in getPlaces function place(place_id)  #}
+
+        {# below cards should be added to a carousel #}
+
+        <div class="flex">
+            {% for place in places %}
+                <article class="mx-2 rounded-[20px] bg-white">
+                    <div class="rounded-[20px] mb-7">
+                        <img src="https://picsum.photos/400/380" alt={{place.title ?? ''}} class="rounded-[20px]"/>
+                    </div>
+                    <div class="px-7 pb-14">
+                        <div class="mb-4">
+                            <h4 class="text-2xl mb-1">{{ place.title ?? 'title'}}</h4>
+                            <span class="text-[#6c7776] text-lg tracking-[-0.18px]">Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001, India</span>
+                        </div>
+                        <div>
+                            <div>
+                                <span class="font-bold text-lg">Latitude:</span> 
+                                <span class="text-[#6c7776]">&nbsp;{{ place.location ?? '' }}</span>
+                            </div>
+                            <div>
+                                <span class="font-bold text-lg">Longtitude:</span>
+                                <span class="text-[#6c7776]">&nbsp;{{ place.location ?? '' }}</span>
+                            </div>
+                        </div>
+                    </div> 
+                </article>
+            {% endfor %}
         </div>
     </section>
 
+    {# City Search Section. API repsonse Data should be exposed to template to be able to interact with the data in twig #}
+    {# Twig will need to pass om a searchTerm using an input fields value to the custom Module controller which will be used as a query parameter#}
+    <section class="bg-[url(https://picsum.photos/600)] h-[544px] rounded-t-[40px] flex justify-center bg-cover">
+        <div class="flex flex-col w-1/2 py-16 justify-center">
+            <h1 class="text-white text-[68px] mb-8 tracking-[-0.92px] text-center">City Search</h1>
+                <div 
+                    class="relative w-full bg-white p-4 rounded-xl"
+                    x-data="{ searchInput : '', getValue: function() { console.log(this.searchInput); } }"
+                >
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        x-model="searchInput"
+                        x-on:keyup="getValue" 
+                        aria-label="Search input"
+                        placeholder="Enter a City name"
+                        class="p-2 pr-14 w-4/5"
+                        />
+                    <button class="absolute right-2 top-2.5 bg-[#c86e04] flex items-center py-3 px-8 text-lg text-white rounded-lg">Search</button>
+                </div>
+            {# </div> #}
+        </div>
+    </section>
+    {# Results section iterate over results and return a result card for each itemm #}
+    <section class="bg-[#E4E9E8] -mt-8 mb-28 rounded-t-[40px] pt-6">
+        <div class="flex justify-center">
+            <div class="w-2/3">
+                <h4 class="text-lg text-[#1f312f] tracking-[-0.18px]">The results are..</h4>
+            </div>
+        </div>
 
+        <ul 
+            role="list"
+            class="flex flex-col items-center"
+        >
+            {% for place in places %}
+                <div class="w-2/3 bg-white rounded-2xl my-2 p-5">
+                    <div class="flex justify-between p-1.5">
+                        <div class="flex flex-col">
+                            <h4 class="text-[#1A6BF9] text-[28px] tracking-[-0.28px] mb-4">Sheffield,UK</h4>
+                            <div class="flex mb-1.5">
+                                <p class="font-bold">Latitude:</p>
+                                <span class="text-[#6c7776]">&nbsp; 34.234566</span>
+                            </div>
+                            <div class="flex">
+                                <span class="font-bold">Longtitude:</span>
+                                <span class="text-[#6c7776]">&nbsp; -77.234566</span>
+                            </div>
+                        </div>
+                        <div class="flex relative">
 
+                            <span class="mt-auto text-[#c86e04] ">
+                            <a href="https://honcho.agency/" target="_blank" class="underline underline-offset-1">
+                                    Get directions
+                                </a>
+                            </span>
 
-
-
+                            <span class="mt-auto ml-4 -mb-1.5">
+                                <svg id="Group_12" 
+                                    data-name="Group 12" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    width="38" 
+                                    height="38" 
+                                    viewbox="0 0 38 38"
+                                >
+                                    <circle id="Ellipse_1" 
+                                        data-name="Ellipse 1" 
+                                        cx="19" 
+                                        cy="19" 
+                                        r="19" 
+                                        fill="#c86e04"
+                                    />
+                                    <g id="np_arrow-right_888647_000000"
+                                        transform="translate(16 11.711)"
+                                    >
+                                        <path id="Path_4" 
+                                            data-name="Path 4" 
+                                            d="M54.856,36.66l-1.524-1.524L59.1,29.371l-5.766-5.765,1.524-1.524,7.288,7.289Z" transform="translate(-53.332 -22.082)" 
+                                            fill="#fff"
+                                        />
+                                    </g>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+    </section>
 </body>
 </html>
