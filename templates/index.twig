@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <title>Welcome to Craft CMS</title>
+    <title>Honcho Code Challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="referrer" content="origin-when-cross-origin" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,7 +32,7 @@
 
         <div class="flex">
             {% for place in places %}
-                <article class="mx-2 rounded-[20px] bg-white">
+                <article class="mx-2 rounded-[20px] bg-white max-w-[380px]">
                     <div class="rounded-[20px] mb-7">
                         <img src="https://picsum.photos/400/380" alt={{place.title ?? ''}} class="rounded-[20px]"/>
                     </div>
@@ -59,7 +59,8 @@
 
     {# City Search Section. API repsonse Data should be exposed to template to be able to interact with the data in twig #}
     {# Twig will need to pass om a searchTerm using an input fields value to the custom Module controller which will be used as a query parameter#}
-    <section class="bg-[url(https://picsum.photos/600)] h-[544px] rounded-t-[40px] flex justify-center bg-cover">
+<section class="bg-[url(https://picsum.photos/1440)] h-[544px] rounded-t-[40px] flex justify-center bg-center">
+
         <div class="flex flex-col w-1/2 py-16 justify-center">
             <h1 class="text-white text-[68px] mb-8 tracking-[-0.92px] text-center">City Search</h1>
                 <div 
